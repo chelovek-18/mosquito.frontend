@@ -1,2 +1,2 @@
-# mosquito
+# mosquito.frontend
 framework mosquito
