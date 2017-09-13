@@ -4,7 +4,7 @@ const path = require('path');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = {
-    devtool: "sourcemap",
+    devtool: "source-map",
     entry: "./src/js/index.js",
     output: {
         path: path.resolve(__dirname + "/release/mosquito"),
@@ -30,7 +30,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: true }),
+        //new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
         new WriteFilePlugin({
             test: /\.js$/
         })

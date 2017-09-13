@@ -4,7 +4,7 @@
   "description": "framework mosquito",
   "main": "server.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server",
+    "start": "./node_modules/.bin/webpack-dev-server -d",
     "build": "./node_modules/.bin/webpack -d",
     "build_prod": "./node_modules/.bin/webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
