@@ -1,0 +1,36 @@
+{
+  "name": "mosquito.frontend",
+  "version": "1.0.0",
+  "description": "framework mosquito",
+  "main": "server.js",
+  "scripts": {
+    "start": "./node_modules/.bin/webpack-dev-server",
+    "build": "./node_modules/.bin/webpack -d",
+    "build_prod": "./node_modules/.bin/webpack -p",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chelovek-18/mosquito.frontend.git"
+  },
+  "author": "Mosquito team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chelovek-18/mosquito.frontend/issues"
+  },
+  "homepage": "https://github.com/chelovek-18/mosquito.frontend#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "css-loader": "^0.28.7",
+    "express": "^4.15.4",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.6",
+    "webpack-dev-server": "^2.7.1",
+    "write-file-webpack-plugin": "^4.1.0"
+  }
+}

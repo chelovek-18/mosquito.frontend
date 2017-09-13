@@ -1,0 +1,19 @@
+body {
+    font-size: 14pt;
+    font-family: sans-serif;
+}
+
+.first {
+    font-size: 18pt;
+    color: dodgerblue;
+}
+
+.second {
+    color: #009113;
+}
+
+.tree {
+    font-size: 16pt;
+    color: crimson;
+}
+

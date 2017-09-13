@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    "transform-runtime"
+  ],
+  "ignore": [
+    "./dist",
+    "./release",
+    "webpack.config.js"
+  ]
+}
