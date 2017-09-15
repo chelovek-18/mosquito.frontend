@@ -1,7 +1,7 @@
 const debug = process.env.NODE_ENV !== "production";
 const webpack = require('webpack');
 const path = require('path');
-const WriteFilePlugin = require('write-file-webpack-plugin');
+//const WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = {
     entry: [/*"babel-polyfill",*/ "./src/js/index.js"],
@@ -13,9 +13,9 @@ module.exports = {
     module: {
         rules: [
             {
-            test: /\.css$/,
-            loader: "style-loader!css-loader"
-        },
+                test: /\.css$/,
+                loader: ['style-loader', 'css-loader'],
+            },
             {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components|release|dist)/,

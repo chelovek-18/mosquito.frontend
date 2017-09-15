@@ -3,7 +3,8 @@
 // Component includes example
 import {example} from "./example/example";
 // Styles include example
-import {} from '../css/example.css';
+import css from '!css-loader!../css/example.css'; // css as object
+import '../css/example.css'; //css includes to bundle
 // ES7 features example
 (async function main(){
     console.log("wait...");
