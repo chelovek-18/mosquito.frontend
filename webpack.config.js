@@ -4,12 +4,11 @@ const path = require('path');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = {
-    devtool: "source-map",
     entry: [/*"babel-polyfill",*/ "./src/js/index.js"],
     output: {
-        path: path.resolve(__dirname + "/release/mosquito"),
+        path: path.resolve(__dirname + "/release"),
         filename: "mosquito.min.js",
-        //publicPath: "/mosquito/"
+        publicPath: "/"
     },
     module: {
         rules: [
@@ -30,13 +29,12 @@ module.exports = {
         ]
     },
     plugins: [
-        new WriteFilePlugin({
+        /*new WriteFilePlugin({
             test: /\.js$/
-        })
+        })*/
     ],
     devServer: {
-        contentBase: "release",
-        //publicPath: '/mosquito/',
+        contentBase: "src/html/",
         port: 3000
     }
 };
