@@ -5,7 +5,7 @@ const WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = {
     devtool: "source-map",
-    entry: "./src/js/index.js",
+    entry: [/*"babel-polyfill",*/ "./src/js/index.js"],
     output: {
         path: path.resolve(__dirname + "/release/mosquito"),
         filename: "mosquito.min.js",
@@ -30,7 +30,6 @@ module.exports = {
         ]
     },
     plugins: [
-        //new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
         new WriteFilePlugin({
             test: /\.js$/
         })
