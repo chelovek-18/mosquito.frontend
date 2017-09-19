@@ -5,7 +5,7 @@ import { inf } from "./inf/inf";
 const
     subj = { 'inf': inf };
 
-window._mosq_ = new (
+window.$msq = new (
     class Mosquito
     {
         constructor( param ) {
@@ -19,7 +19,7 @@ window._mosq_ = new (
             return new Mosquito;
         }
     }
-)( window._mosq_ );
+)( window.$msq );
 
 
 // Component includes example
