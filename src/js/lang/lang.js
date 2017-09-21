@@ -53,18 +53,22 @@ export var lang = {
         return lng ? languages[ lng ] : languages;
     },
 
+    t: function( string, lng ) {
+        lng = lng || localization;
+        if ( onlineTranslate ) {
+            var xhr = new XMLHttpRequest();
+            xhr.open( 'GET', location.protocol + '//api.microsofttranslator.com/V2/Ajax.svc/Translate?text=' + string + '&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&to=' + lng, false );
+            xhr.send();
+            if ( xhr.status != 200 || /ArgumentOutOfRangeException/.test( xhr.responseText ) ) return string;
+            else return xhr.responseText;
+        }
+        return ( ( lng != 'en' && languages[ lng ] ) ? languages[ lng ][ string ] : null ) || string;
+    },
+
     init: ( function() {
         localization = getLang();
         String.prototype.lang = function( lng ) {
-            lng = lng || localization;
-            if ( onlineTranslate ) {
-                var xhr = new XMLHttpRequest();
-                xhr.open( 'GET', location.protocol + '//api.microsofttranslator.com/V2/Ajax.svc/Translate?text=' + this.toString() + '&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&to=' + lng, false );
-                xhr.send();
-                if ( xhr.status != 200 || /ArgumentOutOfRangeException/.test( xhr.responseText ) ) return this.toString();
-                else return xhr.responseText;
-            }
-            return ( ( lng != 'en' && languages[ lng ] ) ? languages[ lng ][ this.toString() ] : null ) || this.toString();
+            return window.mosqito.lang.t( this.toString(), lng );
         }
         setTimeout( function() { delete lang.init; }, 0 );
     })()
