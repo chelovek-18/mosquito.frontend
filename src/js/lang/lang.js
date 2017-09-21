@@ -14,9 +14,9 @@ var
         var lang = n ? ( n.browserLanguage || n.language || n.userLanguage || n.systemLanguage ) : null;
         // var.3 - Get language from url ( 'en.domain.com' or 'domain.com/en/' )
         if ( !lang || ( !languages[ lang ] && lang != 'en' ) ) {
-            Object.keys( languages ).forEach( function( l ) {
-                if ( [ '.', '/', '$/' ].some( function( postf ) { return ( new RegExp( '/' + l + postf ) ).test( location.href ) } ) )
-                    lang = l;
+            Object.keys( languages ).forEach( function( lng ) {
+                if ( [ '.', '/', '$/' ].some( function( postf ) { return ( new RegExp( '/' + lng + postf ) ).test( location.href ) } ) )
+                    lang = lng;
             });
         }
         // var.4 - Get language from domain zone
@@ -43,18 +43,23 @@ export var lang = {
         onlineTranslate = on;
     },
 
+    addLocalizations: function( obj, loc ) {
+        if ( loc ) languages[ loc ] = Object.assign( languages[ loc ], obj );
+        else languages = Object.assign( languages, obj );
+    },
+
     init: ( function() {
         localization = getLang();
-        String.prototype.lang = function( lg ) {
-            lg = lg || localization;
+        String.prototype.lang = function( lng ) {
+            lng = lng || localization;
             if ( onlineTranslate ) {
                 var xhr = new XMLHttpRequest();
-                xhr.open( 'GET', location.protocol + '//api.microsofttranslator.com/V2/Ajax.svc/Translate?text=' + this.toString() + '&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&to=' + lg, false );
+                xhr.open( 'GET', location.protocol + '//api.microsofttranslator.com/V2/Ajax.svc/Translate?text=' + this.toString() + '&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&to=' + lng, false );
                 xhr.send();
                 if ( xhr.status != 200 ) return this.toString();
                 else return xhr.responseText;
             }
-            return ( lg != 'en' ? languages[ lg ][ this.toString() ] : null ) || this.toString();
+            return ( lng != 'en' ? languages[ lng ][ this.toString() ] : null ) || this.toString();
         }
         setTimeout( function() { delete lang.init; }, 0 );
     })()
