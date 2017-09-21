@@ -44,7 +44,7 @@ export var lang = {
     },
 
     addLocalizations: function( obj, loc ) {
-        if ( loc ) languages[ loc ] = Object.assign( languages[ loc ], obj );
+        if ( loc ) languages[ loc ] = Object.assign( languages[ loc ] ? languages[ loc ] : {}, obj );
         else languages = Object.assign( languages, obj );
     },
 
@@ -59,7 +59,7 @@ export var lang = {
                 if ( xhr.status != 200 ) return this.toString();
                 else return xhr.responseText;
             }
-            return ( lng != 'en' ? languages[ lng ][ this.toString() ] : null ) || this.toString();
+            return ( ( lng != 'en' && languages[ lng ] ) ? languages[ lng ][ this.toString() ] : null ) || this.toString();
         }
         setTimeout( function() { delete lang.init; }, 0 );
     })()
