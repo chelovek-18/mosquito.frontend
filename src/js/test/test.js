@@ -3,7 +3,7 @@ export var test = ( function() {
         ua: 7,
         detect: function() {
             if ( false ) return alert( 'ойц!' );
-            delete this.test;
+            delete this.detect;
             return this;
         }
     }

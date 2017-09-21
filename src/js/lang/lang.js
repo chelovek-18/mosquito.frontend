@@ -30,6 +30,7 @@ var
         return lang;
     };
 
+// ------------------------------------- Language -------------------------------------
 export var lang = {
     set localization( lng ) {
         if ( languages[ lng ] || lng == 'en' ) localization = lng;
@@ -40,7 +41,7 @@ export var lang = {
     },
 
     onlineTranslate: function( on ) {
-        onlineTranslate = on;
+        onlineTranslate = on === undefined ? true : on;
     },
 
     addLocalizations: function( obj, lng ) {
