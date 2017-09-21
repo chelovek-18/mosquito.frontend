@@ -60,7 +60,7 @@ export var lang = {
                 var xhr = new XMLHttpRequest();
                 xhr.open( 'GET', location.protocol + '//api.microsofttranslator.com/V2/Ajax.svc/Translate?text=' + this.toString() + '&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&to=' + lng, false );
                 xhr.send();
-                if ( xhr.status != 200 ) return this.toString();
+                if ( xhr.status != 200 || /ArgumentOutOfRangeException/.test( xhr.responseText ) ) return this.toString();
                 else return xhr.responseText;
             }
             return ( ( lng != 'en' && languages[ lng ] ) ? languages[ lng ][ this.toString() ] : null ) || this.toString();
