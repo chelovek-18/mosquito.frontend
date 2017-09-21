@@ -1,4 +1,4 @@
-import { ru } from "./ru.json";
+import * as ru from "./ru.json";
 console.log( ru );
 var
     n = navigator,
