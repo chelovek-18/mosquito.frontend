@@ -15,7 +15,7 @@ var
         // var.3 - Get language from url ( 'en.domain.com' or 'domain.com/en/' )
         if ( !lang || ( !languages[ lang ] && lang != 'en' ) ) {
             Object.keys( languages ).forEach( function( l ) {
-                if ( ( new RegExp( '/' + l + '.' ) ).test( location.href ) || ( new RegExp( '/' + l + '/' ) ).test( location.href ) )
+                if ( [ '.', '/', '$/' ].some( function( postf ) { return ( new RegExp( '/' + l + postf ) ).test( location.href ) } ) )
                     lang = l;
             });
         }
@@ -45,15 +45,16 @@ export var lang = {
 
     init: ( function() {
         localization = getLang();
-        String.prototype.lang = function() {
+        String.prototype.lang = function( lg ) {
+            lg = lg || localization;
             if ( onlineTranslate ) {
                 var xhr = new XMLHttpRequest();
-                xhr.open( 'GET', location.protocol + '//api.microsofttranslator.com/V2/Ajax.svc/Translate?text=' + this.toString() + '&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&to=' + localization, false );
+                xhr.open( 'GET', location.protocol + '//api.microsofttranslator.com/V2/Ajax.svc/Translate?text=' + this.toString() + '&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&to=' + lg, false );
                 xhr.send();
                 if ( xhr.status != 200 ) return this.toString();
                 else return xhr.responseText;
             }
-            return ( localization != 'en' ? languages[ localization ][ this.toString() ] : null ) || this.toString();
+            return ( lg != 'en' ? languages[ lg ][ this.toString() ] : null ) || this.toString();
         }
         setTimeout( function() { delete lang.init; }, 0 );
     })()
