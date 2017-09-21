@@ -4,7 +4,7 @@
 import { lang } from "./lang/lang";
 import { test } from "./test/test";
 const
-    subj = { 'lang': lang, 'test': test };
+    subj = { lang: lang, test: test };
 
 window.mosqito = new (
     class Mosquito
