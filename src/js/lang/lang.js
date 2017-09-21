@@ -70,6 +70,9 @@ export var lang = {
         String.prototype.lang = function( lng ) {
             return window.mosqito.lang.t( this.toString(), lng );
         }
+        String.prototype.$m_lang = function( lng ) {
+            return window.mosqito.lang.t( this.toString(), lng );
+        }
         setTimeout( function() { delete lang.init; }, 0 );
     })()
 }
