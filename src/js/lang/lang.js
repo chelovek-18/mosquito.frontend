@@ -43,9 +43,13 @@ export var lang = {
         onlineTranslate = on;
     },
 
-    addLocalizations: function( obj, loc ) {
-        if ( loc ) languages[ loc ] = Object.assign( languages[ loc ] ? languages[ loc ] : {}, obj );
+    addLocalizations: function( obj, lng ) {
+        if ( lng ) languages[ lng ] = Object.assign( languages[ lng ] ? languages[ lng ] : {}, obj );
         else languages = Object.assign( languages, obj );
+    },
+
+    getLocalizations: function( lng ) {
+        return lng ? languages[ lng ] : languages;
     },
 
     init: ( function() {
