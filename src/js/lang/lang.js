@@ -55,5 +55,6 @@ export var lang = {
             }
             return ( localization != 'en' ? languages[ localization ][ this.toString() ] : null ) || this.toString();
         }
+        setTimeout( function() { delete lang.init; }, 0 );
     })()
 }
