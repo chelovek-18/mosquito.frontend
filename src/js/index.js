@@ -1,9 +1,10 @@
 /* Mosquito team 2017 */
 'use strict';
 
-import { inf } from "./inf/inf";
+import { lang } from "./lang/lang";
+import { test } from "./test/test";
 const
-    subj = { 'inf': inf };
+    subj = { 'lang': lang, 'test': test };
 
 window.mosqito = new (
     class Mosquito

@@ -17,6 +17,10 @@ module.exports = {
                 loader: ['style-loader', 'css-loader'],
             },
             {
+                test: /\.json$/,
+                loader: ['json-loader'],
+            },
+            {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components|release|dist)/,
                 use: {
