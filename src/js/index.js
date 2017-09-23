@@ -1,14 +1,13 @@
 /* Mosquito team 2017 */
 'use strict';
 
+// Include your module into project here
 import { lang } from "./lang/lang";
 import { test } from "./test/test";
-var
+const
     subj = { lang: lang, test: test };
 
-window.subj = subj;
-
-window.mosqito = new (
+/*window.mosqito = new (
     function Mosquito( param ) {
         param = param || {};
 
@@ -22,24 +21,23 @@ window.mosqito = new (
             return new Mosquito;
         };
     }
-)( window.mosqito );
+)( window.mosqito );*/
 
-/*window.mosquito = new (
-    function() {}()
-)( window.mosqito ); ''.repeat - проверка */
-
-/*window.mosqito = new (
+// ------------------------------------- Create mosqito -------------------------------------
+window.mosqito = new (
     class Mosquito
     {
-        constructor( param ) {
-            if ( param && param instanceof Array )
+        // Configurated mosqito and include modules
+        constructor( conf = {} ) {
+            /*if ( param && param instanceof Array )
                 Object.keys( subj ).forEach( ( m ) => { if ( !~param.indexOf( m ) ) delete subj[ m ]; } );
-            Object.assign( this, subj );
+            Object.assign( this, subj );*/
         }
 
+        // For rename: let newName = mosqito.rename();
         rename() {
-            Object.keys( window ).forEach( ( n ) => { if ( window[ n ] instanceof Mosquito ) delete window[ n ]; } );
+            Object.keys( window ).forEach( n => window[ n ] instanceof Mosquito && delete window[ n ] );
             return new Mosquito;
         }
     }
-)( window.mosqito );*/
+)( window.mosqito );
