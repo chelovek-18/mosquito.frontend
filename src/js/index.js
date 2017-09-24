@@ -26,10 +26,10 @@ window.mosquito = new (
                 });
                 // Redefine modules methods with user config
                 Object.keys( conf )
-                    .filter( m => m != 'on' && m != 'off' )
+                    .filter( m => m != 'on' && m != 'off' && conf[ m ] == 'object' )
                     .forEach( m => {
                         if ( modules[ m ] )
-                            Object.keys( m ).forEach( ( method, methName ) => modules[ methName ] = method );
+                            Object.keys( conf[ m ] ).forEach( ( method, methName ) => modules[ m ][ methName ] = method );
                     });
                 // Add plugs for uninstall modules
                 this.lang = {
