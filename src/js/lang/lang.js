@@ -1,9 +1,13 @@
 // 1. Import all languages without "en"
 import * as ru from "./ru.json";
 
-var
+const
     // 2. Create languages object
-    languages = { ru: ru },
+    languages = {
+        ru: ru
+    };    
+
+let
     n = navigator,
     d = document,
     localization = 'en',
@@ -31,9 +35,7 @@ var
     };
 
 // ------------------------------------- Language -------------------------------------
-export var lang = {
-    nm: parent.name,
-
+export let lang = {
     set localization( lng ) {
         if ( languages[ lng ] || lng == 'en' ) localization = lng;
     },
