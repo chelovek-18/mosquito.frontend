@@ -26,10 +26,7 @@ export function init( conf, modules ) {
         // Redefine modules methods with user config
         Object.keys( conf )
             .filter( m => m != 'on' && m != 'off' && typeof conf[ m ] == 'object' )
-            .forEach( m => {
-                if ( modules[ m ] )
-                    Object.keys( conf[ m ] ).forEach( method => modules[ m ][ method ] = conf[ m ][ method ] );
-            });
+            .forEach( m => Object.assign( modules[ m ] = modules[ m ] || {}, conf[ m ] ) );
     }
 
     // Include modules
