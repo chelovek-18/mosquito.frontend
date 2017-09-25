@@ -28,7 +28,7 @@ export function init( conf, modules ) {
             .filter( m => m != 'on' && m != 'off' && typeof conf[ m ] == 'object' )
             .forEach( m => {
                 if ( modules[ m ] )
-                    Object.keys( conf[ m ] ).forEach( ( method, methName ) => modules[ m ][ method ] = conf[ m ][ method ] );
+                    Object.keys( conf[ m ] ).forEach( method => modules[ m ][ method ] = conf[ m ][ method ] );
             });
     }
 
