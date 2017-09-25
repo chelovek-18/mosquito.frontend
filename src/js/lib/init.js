@@ -25,10 +25,10 @@ export function init( conf, modules ) {
 
         // Redefine modules methods with user config
         Object.keys( conf )
-            .filter( m => m != 'on' && m != 'off' && conf[ m ] == 'object' )
+            .filter( m => m != 'on' && m != 'off' && typeof conf[ m ] == 'object' )
             .forEach( m => {
                 if ( modules[ m ] )
-                    Object.keys( conf[ m ] ).forEach( ( method, methName ) => modules[ m ][ methName ] = method );
+                    Object.keys( conf[ m ] ).forEach( ( method, methName ) => modules[ m ][ method ] = conf[ m ][ method ] );
             });
     }
 
