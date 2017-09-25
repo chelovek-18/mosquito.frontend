@@ -32,6 +32,8 @@ var
 
 // ------------------------------------- Language -------------------------------------
 export var lang = {
+    nm: parent.name,
+
     set localization( lng ) {
         if ( languages[ lng ] || lng == 'en' ) localization = lng;
     },
