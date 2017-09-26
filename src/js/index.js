@@ -17,6 +17,8 @@ window.mosquito = new (
     class Mosquito
     {
         constructor( conf ) {
+            this.name = 'mosquito';
+
             this.init( conf );
         }
 

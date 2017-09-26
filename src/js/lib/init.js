@@ -6,7 +6,8 @@ export function init( conf, modules ) {
     if ( conf && typeof conf == 'object' ) {
         // Add plugs for uninstall modules
         this.lang = {
-            t: function( string ) { return string; }
+            t: function( string ) { return string; },
+            get localization() { return 'en'; }
         }
         if ( !String.t ) String.prototype.t = function() { return this.toString(); }
         if ( !String.$m_t ) String.prototype.$m_t = function() { return this.toString(); }
@@ -28,6 +29,9 @@ export function init( conf, modules ) {
             .filter( m => m != 'on' && m != 'off' && typeof conf[ m ] == 'object' )
             .forEach( m => Object.assign( modules[ m ] = modules[ m ] || {}, conf[ m ] ) );
     }
+
+    // Link to root
+    Object.keys( modules ).forEach( m => modules[ m ].parent = this );
 
     // Include modules
     Object.assign( this, modules );

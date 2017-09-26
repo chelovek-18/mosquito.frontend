@@ -1,13 +1,11 @@
 // 1. Import all languages without "en"
 import * as ru from "./ru.json";
 
-const
+let
     // 2. Create languages object
     languages = {
         ru: ru
-    };    
-
-let
+    },
     n = navigator,
     d = document,
     localization = 'en',
@@ -15,7 +13,7 @@ let
     // Get language:
     getLang = function() {
         // var.2 - Get language from window.navigator
-        var lang = n ? ( n.browserLanguage || n.language || n.userLanguage || n.systemLanguage ) : null;
+        let lang = n ? ( n.browserLanguage || n.language || n.userLanguage || n.systemLanguage ) : null;
         // var.3 - Get language from url ( 'en.domain.com' or 'domain.com/en/' )
         if ( !lang || ( !languages[ lang ] && lang != 'en' ) ) {
             Object.keys( languages ).forEach( function( lng ) {
@@ -36,6 +34,10 @@ let
 
 // ------------------------------------- Language -------------------------------------
 export let lang = {
+    prob: function() {
+        console.log( '?', this.name );
+    },
+
     set localization( lng ) {
         if ( languages[ lng ] || lng == 'en' ) localization = lng;
     },
@@ -71,10 +73,10 @@ export let lang = {
 
     init: ( function() {
         localization = getLang();
-        String.prototype.lang = function( lng ) {
+        String.prototype.t = function( lng ) {
             return window.mosqito.lang.t( this.toString(), lng );
         }
-        String.prototype.$m_lang = function( lng ) {
+        String.prototype.$m_t = function( lng ) {
             return window.mosqito.lang.t( this.toString(), lng );
         }
         setTimeout( function() { delete lang.init; }, 0 );
