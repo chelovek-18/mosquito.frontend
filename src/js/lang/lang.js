@@ -24,6 +24,7 @@ let
         // var.4 - Get language from domain zone
         if ( !lang || ( !languages[ lang ] && lang != 'en' ) ) lang = location.host.split( ':' )[ 0 ].split( '.' ).pop();
         if ( ( !languages[ lang ] && lang != 'en' ) ) lang = 'en';
+        // TODO: Make return result by promise or not return (update localization variable)
         window.onload = function() {
             // var.1 - Get language from html attribute "lang"
             if ( document.children && document.children[ 0 ] && document.children[ 0 ].lang && ( languages[ document.children[ 0 ].lang ] || 'en' ) )
@@ -60,6 +61,7 @@ export let lang = {
 
     // Translate
     // TODO: ActiveXObject and account in microsofttranslator.com
+    // TODO: Use mosquito method instead of xhr
     t: function( string, lng ) {
         lng = lng || localization;
         if ( onlineTranslate ) {
