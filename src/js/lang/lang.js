@@ -34,10 +34,7 @@ let
 
 // ------------------------------------- Language -------------------------------------
 export let lang = {
-    prob: function() {
-        console.log( '?', this.name );
-    },
-
+    // Get/set current language ('en', 'ru', etc.)
     set localization( lng ) {
         if ( languages[ lng ] || lng == 'en' ) localization = lng;
     },
@@ -46,10 +43,12 @@ export let lang = {
         return localization;
     },
 
+    // Translate by online-service or use json files
     onlineTranslate: function( on ) {
         onlineTranslate = on === undefined ? true : on;
     },
 
+    // Add/get json localizations object
     addLocalizations: function( obj, lng ) {
         if ( lng ) languages[ lng ] = Object.assign( languages[ lng ] ? languages[ lng ] : {}, obj );
         else languages = Object.assign( languages, obj );
@@ -59,6 +58,8 @@ export let lang = {
         return lng ? languages[ lng ] : languages;
     },
 
+    // Translate
+    // TODO: ActiveXObject and account in microsofttranslator.com
     t: function( string, lng ) {
         lng = lng || localization;
         if ( onlineTranslate ) {
@@ -74,10 +75,10 @@ export let lang = {
     init: ( function() {
         localization = getLang();
         String.prototype.t = function( lng ) {
-            return window.mosqito.lang.t( this.toString(), lng );
+            return window[ lang.parent.name ].lang.t( this.toString(), lng );
         }
         String.prototype.$m_t = function( lng ) {
-            return window.mosqito.lang.t( this.toString(), lng );
+            return window[ lang.parent.name ].lang.t( this.toString(), lng );
         }
         setTimeout( function() { delete lang.init; }, 0 );
     })()
