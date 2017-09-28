@@ -39,12 +39,10 @@ window.mosquito = new (
             this.init( conf );
         }
 
-        // Configurate mosqito and include modules
         init( conf ) {
             init.apply( this, [ conf, modules ] );
         }
 
-        // Use: let newName = mosqito.rename();
         rename() {
             // Delete old object(s):
             Object.keys( window ).forEach( n => { if ( window[ n ] instanceof Mosquito ) delete window[ n ]; } );
