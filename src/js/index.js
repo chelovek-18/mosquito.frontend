@@ -20,13 +20,13 @@ const
  * @constructor
  * Define Mosquito variable name (default = 'mosquito'): window[ this.name ].name === this.name
  * Init mosquito (execute init method)
- * @param {Object} conf                 --> Object configurations (to init method)
+ * @param {?Object} conf                 --> Object configurations (see init method)
  * 
  * @method init                     Init mosquito: configurate and include modules
- * @param {Object} conf                 --> Object configurations: 'on' and 'off' = on/off methods and others keys for redefine methods (see lib/init.js)
+ * @param {?Object} conf                 --> Object configurations: 'on' and 'off' = on/off methods array and others keys for redefine methods (see lib/init.js)
  * 
  * @method rename                   Rename Mosquito Object variable: let newName = mosqito.rename();
- * @returns {Mosquito}                  <-- Return current Mosquito object
+ * @returns {Mosquito}                  <-- Return current Mosquito object into new variable
  * 
  */
 

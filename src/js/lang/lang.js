@@ -57,8 +57,8 @@ let
  * @param {?String} lng                 --> Language ('en', 'ru', etc.) <- or -> undefined
  * @returns {Object}                    <-- Json language
  * 
- * @method onlineTranslateOn        On/off online translate and set translate service
- * @param {?Function/Boolean} fn        --> Translate function <- or -> undefined (set default function) <- or -> false/null for online translate off
+ * @method onlineTranslateOn        On/off online translate + set translate service
+ * @param {?Function/Boolean} fn        --> Translate function <- or -> undefined (set default function) <- or -> false/null == online translate off
  * @returns {String}                    <-- Translated string
  * 
  * @method t                        Translate
